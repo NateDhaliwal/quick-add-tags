@@ -1,5 +1,6 @@
 import { apiInitializer } from "discourse/lib/api";
+import QuickAddTagButton from "../components/quick-add-tag-button";
 
 export default apiInitializer((api) => {
-  api.replaceIcon("shield-halved", "bat-icon");
+  api.renderInOutlet("after-topic-footer-main-buttons", QuickAddTagButton);
 });
