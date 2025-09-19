@@ -28,7 +28,6 @@ export default class QuickAddTagButton extends Component {
   @action
   async addTag() {
     const topic = this.args.topic;
-    console.log(topic);
     const currentTags = topic.tags;
     const settingTags = settings.quick_add_tags.split("|");
     let newTags = currentTags;
@@ -63,6 +62,9 @@ export default class QuickAddTagButton extends Component {
             message: I18n.t(themePrefix("added_tag_success_message")),
           },
         });
+        if (settings.auto_close_topic) {
+          window.reload(); // Reload to show the topic timer in effect
+        }
       });
     } catch (e) {
       const errors = e.jqXHR.responseJSON.errors;
