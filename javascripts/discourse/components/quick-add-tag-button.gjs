@@ -3,6 +3,7 @@ import Component from "@glimmer/component";
 import { action } from "@ember/object";
 import { service } from "@ember/service";
 
+import { ajax } from "discourse/lib/ajax";
 import DButton from "discourse/components/d-button";
 
 export default class QuickAddTagButton extends Component {
@@ -15,7 +16,8 @@ export default class QuickAddTagButton extends Component {
   @action
   async addTag() {
     const topic = this.args.topic;
-    const currentTags = this.args.topic.tags;
+    const currentTags = topic.tags;
+
     const settingTags = settings.quick_add_tags.split("|");
     console.log("Current tags:");
     console.log(currentTags);
@@ -28,8 +30,11 @@ export default class QuickAddTagButton extends Component {
     console.log("New tags:");
     console.log(newTags);
 
-    await topic.save({
-      tags: newTags
+    await ajax(`/t/-/{topic.id}`, {
+      type: "POST",
+      data: {
+        tags: newTags
+      }
     }).then(() => {
       this.toasts.success({
         duration: "short",
