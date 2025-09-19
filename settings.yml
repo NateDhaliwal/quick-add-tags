@@ -1,2 +1,4 @@
-example_setting:
-  default: true
+quick_add_tags:
+  default: ""
+  type: list
+  list_type: tag
