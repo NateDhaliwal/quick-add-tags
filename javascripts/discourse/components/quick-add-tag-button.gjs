@@ -33,7 +33,7 @@ export default class QuickAddTagButton extends Component {
     const shortcuts = timeShortcuts(timezone);
     console.log(shortcuts);
     console.log(shortcuts.tomorrow());
-    console.log(inNDays(timezone, settings.auto_close_topic_days);
+    console.log(inNDays(timezone, settings.auto_close_topic_days));
     
     try {
       await ajax(`/t/-/${topic.id}.json`, {
