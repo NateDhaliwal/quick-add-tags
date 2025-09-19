@@ -40,7 +40,7 @@ export default class QuickAddTagButton extends Component {
           this.toasts.success({
             duration: "short",
             data: {
-              message: I18n.t(themePrefix("added_tag_success_message"), tag=this.tagOrListText),
+              message: I18n.t(themePrefix("added_tag_success_message"), tag=this.tagOrListText()),
             },
           });
         }
