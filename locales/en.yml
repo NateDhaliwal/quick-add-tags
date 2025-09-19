@@ -1,7 +1,7 @@
 en:
-  added_tag_success_message: "Added tag(s)!"
-  quick_add_tag_button_text: "Add tag(s)"
-  quick_add_tag_button_title: "Add tag(s)"
+  added_tag_success_message: "Added %{tag}"
+  quick_add_tag_button_text: "Add %{tag}"
+  quick_add_tag_button_title: "Add %{tag}"
 
   theme_metadata:
     description: "Quickly add tag(s) with a button at the topic footer."
