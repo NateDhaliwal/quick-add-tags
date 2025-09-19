@@ -1,13 +1,11 @@
 {
-  "name": "Quick Add Tags",
+  "name": "Quick-add Tags",
   "component": true,
   "authors": "NateDhaliwal",
   "about_url": "TODO: Put your theme's public repo or Meta topic URL here",
-  "license_url": "TODO: Put your theme's LICENSE URL here",
+  "license_url": "https://github.com/NateDhaliwal/quick-add-tags/blob/main/LICENSE",
   "learn_more": "TODO",
   "theme_version": "0.0.1",
-  "minimum_discourse_version": null,
-  "maximum_discourse_version": null,
   "assets": {},
   "modifiers": {}
 }
