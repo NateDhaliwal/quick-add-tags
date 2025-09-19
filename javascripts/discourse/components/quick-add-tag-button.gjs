@@ -67,15 +67,20 @@ export default class QuickAddTagButton extends Component {
         }
       });
     } catch (e) {
-      const errors = e.jqXHR.responseJSON.errors;
-      errors.forEach((error) => {
-        this.toasts.error({
-          duration: "short",
-          data: {
-            message: error
-          },
+      try {
+        const errors = e.jqXHR.responseJSON.errors;
+        errors.forEach((error) => {
+          this.toasts.error({
+            duration: "short",
+            data: {
+              message: error
+            },
+          });
         });
-      });
+      } catch (ee) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
     }
   }
 
