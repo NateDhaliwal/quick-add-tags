@@ -36,6 +36,13 @@ export default class QuickAddTagButton extends Component {
     console.log(inNDays(timezone, settings.auto_close_topic_days));
     
     try {
+      await ajax(`/t/-/${topic.id}/timer.json`, {
+        type: "POST",
+        data: {
+          type: "close",
+          time: settings.auto_close_topic_days
+        }
+      });
       await ajax(`/t/-/${topic.id}.json`, {
         type: "PUT",
         data: {
