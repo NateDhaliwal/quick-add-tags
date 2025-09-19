@@ -40,7 +40,7 @@ export default class QuickAddTagButton extends Component {
           this.toasts.success({
             duration: "short",
             data: {
-              message: I18n.t(themePrefix("added_tag_success_message")),
+              message: I18n.t(themePrefix("added_tag_success_message"), { tag: this.tagOrListText }),
             },
           });
         }
@@ -75,8 +75,8 @@ export default class QuickAddTagButton extends Component {
       <DButton
         @action={{this.addTag}}
         @icon="tag"
-        @label={{themePrefix "quick_add_tag_button_text" tag=this.tagOrListText}}
-        @title={{themePrefix "quick_add_tag_button_title" tag=this.tagOrListText}}
+        @label={{i18n (themePrefix "quick_add_tag_button_text") tag=this.tagOrListText}}
+        @title={{i18n (themePrefix "quick_add_tag_button_title") tag=this.tagOrListText}}
         class="btn-text"
       />
     {{/if}}
