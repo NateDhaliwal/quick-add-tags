@@ -21,12 +21,6 @@ export default class QuickAddTagButton extends Component {
 
     const settingTags = settings.quick_add_tags.split("|");
 
-    console.log("Current tags:");
-    console.log(currentTags);
-
-    console.log("Setting tags:");
-    console.log(settingTags);
-
     let newTags = currentTags;
 
     settingTags.forEach((tag) => {
@@ -34,34 +28,32 @@ export default class QuickAddTagButton extends Component {
         newTags.push(tag);
       }
     });
-    console.log("New tags:");
-    console.log(newTags);
 
-    await ajax(`/t/-/${topic.id}.json`, {
-      type: "PUT",
-      data: {
-        tags: [...newTags],
-        keep_existing_draft: true
-      }
-    }).then((response) => {
-      console.log("Response:");
-      console.log(response);
-      if (response.ok) {
-        this.toasts.success({
-          duration: "short",
-          data: {
-            message: I18n.t(themePrefix("added_tag_success_message")),
-          },
-        });
-      } else {
-        this.toasts.error({
-          duration: "short",
-          data: {
-            message: response.responseText,
-          },
-        });
-      }
-    });
+    try {
+      await ajax(`/t/-/${topic.id}.json`, {
+        type: "PUT",
+        data: {
+          tags: [...newTags],
+          keep_existing_draft: true
+        }
+      }).then((response) => {
+        if (response.ok) {
+          this.toasts.success({
+            duration: "short",
+            data: {
+              message: I18n.t(themePrefix("added_tag_success_message")),
+            },
+          });
+        }
+      });
+    } catch (e) {
+      this.toasts.error({
+        duration: "short",
+        data: {
+          message: e,
+        },
+      });
+    }
   }
 
   <template>
