@@ -6,8 +6,6 @@ import { service } from "@ember/service";
 import { ajax } from "discourse/lib/ajax";
 import DButton from "discourse/components/d-button";
 
-import i18n from "discourse-i18n";
-
 export default class QuickAddTagButton extends Component {
   @service toasts;
 
@@ -40,7 +38,7 @@ export default class QuickAddTagButton extends Component {
           this.toasts.success({
             duration: "short",
             data: {
-              message: I18n.t(themePrefix("added_tag_success_message"), { tag: this.tagOrListText }),
+              message: I18n.t(themePrefix("added_tag_success_message")),
             },
           });
         }
@@ -56,25 +54,6 @@ export default class QuickAddTagButton extends Component {
         });
       });
     }
-  }
-
-//  get tagOrListText() {
-//    let text = "";
-//    let settingTags = settings.quick_add_tags.split("|");
-//    text += settingTags[0];
-//
-//    for (let i = 1; i < settingTags.length; i++) {
-//      text += `, ${settingTags[i]}`;
-//    }
-//
-//    return text;
-//  }
-
-  get tagOrListText() {
-    // Split the setting string into an array
-    let settingTags = settings.quick_add_tags.split("|");
-    // Join with commas + spaces
-    return settingTags.join(", ");
   }
 
   <template>
