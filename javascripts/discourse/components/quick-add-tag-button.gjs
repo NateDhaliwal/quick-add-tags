@@ -52,7 +52,7 @@ export default class QuickAddTagButton extends Component {
             message: error
           },
         });
-      }
+      });
     }
   }
 
