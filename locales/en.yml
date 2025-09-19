@@ -1,5 +1,9 @@
 en:
+  added_tag_success_message: "Added tag(s)!"
+  quick_add_tag_button_text: "Add tag(s)"
+  quick_add_tag_button_title: "Add tag(s)"
+
   theme_metadata:
-    description: "TODO"
+    description: "Quickly add tag(s) with a button at the topic footer."
     settings:
-      example_setting: "A description of a setting."
+      quick_add_tags: "List of tags to be added when the button is clicked"
