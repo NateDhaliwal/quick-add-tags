@@ -48,7 +48,7 @@ export default class QuickAddTagButton extends Component {
       this.toasts.error({
         duration: "short",
         data: {
-          message: e.jqXHR.responseText,
+          message: e.jqXHR.responseText.errors,
         },
       });
     }
