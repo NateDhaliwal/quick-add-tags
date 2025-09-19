@@ -15,7 +15,7 @@ export default class QuickAddTagButton extends Component {
   get shouldShow() {
     const canEdit = this.args.topic.canEditTags;
     if (settings.auto_close_topic) {
-      if (this.currentUser.moderator || this.currentUser.trust_level == 4) {
+      if (this.currentUser.moderator || this.currentUser.admin || this.currentUser.trust_level == 4) {
         return true;
       } else {
         return false;
