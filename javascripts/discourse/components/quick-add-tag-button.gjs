@@ -44,13 +44,15 @@ export default class QuickAddTagButton extends Component {
         }
       });
     } catch (e) {
-      console.log(e);
-      this.toasts.error({
-        duration: "short",
-        data: {
-          message: JSON.parse(e.jqXHR.responseText).errors,
-        },
-      });
+      const errors = e.jqXHR.responseJSON.errors;
+      errors.forEach((error) => {
+        this.toasts.error({
+          duration: "short",
+          data: {
+            message: error
+          },
+        });
+      }
     }
   }
 
