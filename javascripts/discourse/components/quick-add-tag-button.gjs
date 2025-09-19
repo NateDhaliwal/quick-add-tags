@@ -44,6 +44,7 @@ export default class QuickAddTagButton extends Component {
         }
       });
     } catch (e) {
+      console.log(e);
       this.toasts.error({
         duration: "short",
         data: {
