@@ -82,7 +82,9 @@ export default class QuickAddTagButton extends Component {
       <DButton
         @action={{this.addTag}}
         @icon="tag"
-        @label={{themePrefix "quick_add_tag_button_text" tag=this.tagOrListText}}
+        @label={{i18n
+          themePrefix "quick_add_tag_button_text"
+          tag=this.tagOrListText}}
         @title={{themePrefix "quick_add_tag_button_title" tag=this.tagOrListText}}
         class="btn-text"
       />
