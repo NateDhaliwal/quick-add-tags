@@ -44,7 +44,7 @@ export default class QuickAddTagButton extends Component {
           type: "POST",
           data: {
             status_type: "close",
-            time: settings.auto_close_topic_days * 24 // In hours, multiply by 24 to get days
+            time: settings.auto_close_topic_days; // * 24 // In hours, multiply by 24 to get days
           }
         });
       }
