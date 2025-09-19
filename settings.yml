@@ -9,5 +9,5 @@ auto_close_topic:
 
 auto_close_topic_days:
   default: 1
-  type: integer
+  type: float
   min: 0
