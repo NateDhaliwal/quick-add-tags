@@ -4,9 +4,12 @@ import { action } from "@ember/object";
 import { service } from "@ember/service";
 
 import { ajax } from "discourse/lib/ajax";
+import { timeShortcuts } from "discourse/lib/time-shortcut";
+import { inNDays } from "discourse/lib/time-utils";
 import DButton from "discourse/components/d-button";
 
 export default class QuickAddTagButton extends Component {
+  @service currentUser;
   @service toasts;
 
   get shouldShow() {
@@ -26,6 +29,12 @@ export default class QuickAddTagButton extends Component {
       }
     });
 
+    const timezone = this.currentUser.user_option.timezone;
+    const shortcuts = timeShortcuts(timezone);
+    console.log(shortcuts);
+    console.log(shortcuts.tomorrow());
+    console.log(inNDays(timezone, settings.auto_close_topic_days);
+    
     try {
       await ajax(`/t/-/${topic.id}.json`, {
         type: "PUT",
