@@ -40,19 +40,27 @@ export default class QuickAddTagButton extends Component {
     await ajax(`/t/-/${topic.id}.json`, {
       type: "PUT",
       data: {
-        tags: newTags,
+        tags: [...newTags],
         keep_existing_draft: true
       }
     }).then((response) => {
       console.log("Response:");
       console.log(response);
-
-      this.toasts.success({
-        duration: "short",
-        data: {
-          message: I18n.t(themePrefix("added_tag_success_message")),
-        },
-      });
+      if (response.ok) {
+        this.toasts.success({
+          duration: "short",
+          data: {
+            message: I18n.t(themePrefix("added_tag_success_message")),
+          },
+        });
+      } else {
+        this.toasts.error({
+          duration: "short",
+          data: {
+            message: response.responseText,
+          },
+        });
+      }
     });
   }
 
