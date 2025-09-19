@@ -39,7 +39,7 @@ export default class QuickAddTagButton extends Component {
       await ajax(`/t/${topic.id}/timer.json`, {
         type: "POST",
         data: {
-          type: "close",
+          status_type: "close",
           time: settings.auto_close_topic_days
         }
       });
