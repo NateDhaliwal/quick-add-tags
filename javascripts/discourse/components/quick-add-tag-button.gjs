@@ -19,6 +19,7 @@ export default class QuickAddTagButton extends Component {
   @action
   async addTag() {
     const topic = this.args.topic;
+    console.log(topic);
     const currentTags = topic.tags;
     const settingTags = settings.quick_add_tags.split("|");
     let newTags = currentTags;
@@ -28,21 +29,17 @@ export default class QuickAddTagButton extends Component {
         newTags.push(tag);
       }
     });
-
-    const timezone = this.currentUser.user_option.timezone;
-    const shortcuts = timeShortcuts(timezone);
-    console.log(shortcuts);
-    console.log(shortcuts.tomorrow());
-    console.log(inNDays(timezone, settings.auto_close_topic_days));
     
     try {
-      await ajax(`/t/${topic.id}/timer.json`, {
-        type: "POST",
-        data: {
-          status_type: "close",
-          time: settings.auto_close_topic_days*24
-        }
-      });
+      if (settings.auto_close_topic) {
+        await ajax(`/t/${topic.id}/timer.json`, {
+          type: "POST",
+          data: {
+            status_type: "close",
+            time: settings.auto_close_topic_days * 24 // In hours, multiply by 24 to get days
+          }
+        });
+      }
       await ajax(`/t/-/${topic.id}.json`, {
         type: "PUT",
         data: {
@@ -53,6 +50,7 @@ export default class QuickAddTagButton extends Component {
         this.toasts.success({
           duration: "short",
           data: {
+            // eslint-disable-next-line no-undef
             message: I18n.t(themePrefix("added_tag_success_message")),
           },
         });
