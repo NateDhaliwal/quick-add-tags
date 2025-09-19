@@ -33,7 +33,9 @@ export default class QuickAddTagButton extends Component {
     await ajax(`/t/-/${topic.id}.json`, {
       type: "POST",
       data: {
-        tags: newTags
+        topic: {
+          tags: newTags
+        }
       }
     }).then(() => {
       this.toasts.success({
