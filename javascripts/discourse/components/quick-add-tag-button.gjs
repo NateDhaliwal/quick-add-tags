@@ -67,7 +67,9 @@ export default class QuickAddTagButton extends Component {
         }
       });
     } catch (e) {
-      try {
+      // eslint-disable-next-line no-console
+      console.error(e);
+      if (e.jqXHR.responseJSON.errors !== undefined) {
         const errors = e.jqXHR.responseJSON.errors;
         errors.forEach((error) => {
           this.toasts.error({
@@ -77,9 +79,6 @@ export default class QuickAddTagButton extends Component {
             },
           });
         });
-      } catch (ee) {
-        // eslint-disable-next-line no-console
-        console.error(e);
       }
     }
   }
