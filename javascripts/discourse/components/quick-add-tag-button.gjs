@@ -44,7 +44,10 @@ export default class QuickAddTagButton extends Component {
           tags: newTags
         }
       }
-    }).then(() => {
+    }).then((response) => {
+      console.log("Response:");
+      console.log(response);
+
       this.toasts.success({
         duration: "short",
         data: {
