@@ -16,11 +16,8 @@ export default class QuickAddTagButton extends Component {
   @action
   async addTag() {
     const topic = this.args.topic;
-    console.log(topic);
     const currentTags = topic.tags;
-
     const settingTags = settings.quick_add_tags.split("|");
-
     let newTags = currentTags;
 
     settingTags.forEach((tag) => {
@@ -50,7 +47,7 @@ export default class QuickAddTagButton extends Component {
       this.toasts.error({
         duration: "short",
         data: {
-          message: e,
+          message: e.responseText,
         },
       });
     }
