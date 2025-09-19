@@ -17,10 +17,16 @@ export default class QuickAddTagButton extends Component {
     const topic = this.args.topic;
     const currentTags = this.args.topic.tags;
     const settingTags = settings.quick_add_tags;
+    console.log("Current tags:");
+    console.log(currentTags);
+    console.log("Setting tags:");
+    console.log(settingTags);
     let newTags = currentTags;
     settingTags.forEach((tag) => {
       newTags.push(tag);
     });
+    console.log("New tags:");
+    console.log(newTags);
 
     await topic.save({
       tags: newTags
