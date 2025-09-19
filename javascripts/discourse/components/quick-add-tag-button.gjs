@@ -19,13 +19,19 @@ export default class QuickAddTagButton extends Component {
     const currentTags = topic.tags;
 
     const settingTags = settings.quick_add_tags.split("|");
+
     console.log("Current tags:");
     console.log(currentTags);
+
     console.log("Setting tags:");
     console.log(settingTags);
+
     let newTags = currentTags;
+
     settingTags.forEach((tag) => {
-      newTags.push(tag);
+      if (!currentTags.includes(tag)) {
+        newTags.push(tag);
+      }
     });
     console.log("New tags:");
     console.log(newTags);
