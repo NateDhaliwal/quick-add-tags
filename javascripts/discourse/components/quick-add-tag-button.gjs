@@ -63,7 +63,7 @@ export default class QuickAddTagButton extends Component {
           },
         });
         if (settings.auto_close_topic) {
-          window.reload(); // Reload to show the topic timer in effect
+          window.location.reload(); // Reload to show the topic timer in effect
         }
       });
     } catch (e) {
