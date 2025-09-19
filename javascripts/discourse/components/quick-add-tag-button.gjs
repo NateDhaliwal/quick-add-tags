@@ -30,7 +30,7 @@ export default class QuickAddTagButton extends Component {
       await ajax(`/t/-/${topic.id}.json`, {
         type: "PUT",
         data: {
-          tags: [...newTags],
+          tags: newTags,
           keep_existing_draft: true
         }
       }).then((response) => {
