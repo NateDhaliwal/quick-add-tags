@@ -61,7 +61,7 @@ export default class QuickAddTagButton extends Component {
     const settingTags = settings.quick_add_tags.split("|");
     text += settingTags[0];
 
-    for (int i=1; i<settingTags.length; i++) {
+    for (let i = 1; i < settingTags.length; i++) {
       text += `, ${settingTags[i]}`;
     }
 
