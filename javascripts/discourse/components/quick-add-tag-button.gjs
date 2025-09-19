@@ -6,6 +6,8 @@ import { service } from "@ember/service";
 import { ajax } from "discourse/lib/ajax";
 import DButton from "discourse/components/d-button";
 
+import i18n from "discourse-i18n";
+
 export default class QuickAddTagButton extends Component {
   @service toasts;
 
