@@ -34,14 +34,12 @@ export default class QuickAddTagButton extends Component {
           keep_existing_draft: true
         }
       }).then((response) => {
-        if (response.ok) {
-          this.toasts.success({
-            duration: "short",
-            data: {
-              message: I18n.t(themePrefix("added_tag_success_message")),
-            },
-          });
-        }
+        this.toasts.success({
+          duration: "short",
+          data: {
+            message: I18n.t(themePrefix("added_tag_success_message")),
+          },
+        });
       });
     } catch (e) {
       const errors = e.jqXHR.responseJSON.errors;
