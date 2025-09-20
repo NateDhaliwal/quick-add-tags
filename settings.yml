@@ -1,13 +1,34 @@
-quick_add_tags:
-  default: ""
-  type: list
-  list_type: tag
+quick_add_tags_buttons:
+  default: []
+  type: objects
+  schema:
+    name: button
+    properties:
+      tags_to_add:
+        type: list
+        list_type: tag
+      show_in_category:
+        type: list
+        list_type: category
+      auto_close_topic:
+        type: bool
+        default: false
+      auto_close_topic_days:
+        type: integer
+        default: 1
+        validations:
+          min: 0
 
-auto_close_topic:
-  default: false
-  type: bool
+# quick_add_tags:
+#   default: ""
+#   type: list
+#   list_type: tag
 
-auto_close_topic_days:
-  default: 1
-  type: integer
-  min: 0
+# auto_close_topic:
+#   default: false
+#   type: bool
+
+# auto_close_topic_days:
+#   default: 1
+#   type: integer
+#   min: 0
