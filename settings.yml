@@ -11,7 +11,7 @@ quick_add_tags_buttons:
         type: categories
         # list_type: category
       auto_close_topic:
-        type: bool
+        type: boolean
         default: false
       auto_close_topic_days:
         type: integer
