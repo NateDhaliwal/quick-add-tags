@@ -11,9 +11,12 @@ import DButton from "discourse/components/d-button";
 export default class QuickAddTagButton extends Component {
   @service currentUser;
   @service toasts;
+  @service discovery;
 
   get shouldShow() {
-    console.log(settings.quick_add_tags_buttons);
+    const settingObj = settings.quick_add_tags_buttons;
+    console.log(this.discovery.category.id);
+    
     const canEdit = this.args.topic.canEditTags;
     if (settings.auto_close_topic) {
       if (this.currentUser.moderator || this.currentUser.admin || this.currentUser.trust_level == 4) {
