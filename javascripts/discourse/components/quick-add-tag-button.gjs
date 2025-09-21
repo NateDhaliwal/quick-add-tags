@@ -12,30 +12,25 @@ import DButton from "discourse/components/d-button";
 export default class QuickAddTagButton extends Component {
   @service currentUser;
   @service toasts;
-  @service discovery;
-
-  @tracked category = this.discovery;
 
   get shouldShow() {
-    console.log(this.args.topic);
-    console.log(this.category);
     const settingObj = settings.quick_add_tags_buttons;
     
     const canEdit = this.args.topic.canEditTags;
 
-    // for (const settingButton in settingObj) {
-    //   if (settingButton.categories.split("|").includes(this.args.topic.category_id)) {
-    //   if (settings.auto_close_topic) {
-    //     if (this.currentUser.moderator || this.currentUser.admin || this.currentUser.trust_level == 4) {
-    //       return true;
-    //     } else {
-    //       return false;
-    //     }
-    //   } else {
-    //     return canEdit;
-    //   }
-    // }
-    return true;
+    for (const settingButton in settingObj) {
+      if (settingButton.categories.split("|").includes(this.args.topic.category_id)) {
+        if (settingButton.auto_close_topic) {
+          if (this.currentUser.moderator || this.currentUser.admin || this.currentUser.trust_level == 4) {
+            return true;
+          } else {
+            return false;
+          }
+        } else {
+          return canEdit;
+        }
+      }
+    }
   }
 
   @action
