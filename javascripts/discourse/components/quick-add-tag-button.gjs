@@ -14,7 +14,7 @@ export default class QuickAddTagButton extends Component {
   @service toasts;
   @service discovery;
 
-  @tracked category = this.discovery.category;
+  @tracked category = this.discovery;
 
   get shouldShow() {
     console.log(this.args.topic);
