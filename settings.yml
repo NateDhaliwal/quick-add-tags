@@ -4,10 +4,10 @@ quick_add_tags_buttons:
   schema:
     name: button
     properties:
-      tags:
+      tags_to_add:
         type: tags
         # list_type: tag
-      category:
+      in_categories:
         type: categories
         # list_type: category
       auto_close_topic:
