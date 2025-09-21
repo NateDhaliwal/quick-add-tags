@@ -14,7 +14,7 @@ export default class QuickAddTagButton extends Component {
   @service toasts;
   @service discovery;
 
-  @tracked category = this.discovery.category.id;
+  @tracked category = this.discovery.category;
 
   get shouldShow() {
     console.log(this.args.topic);
@@ -24,7 +24,7 @@ export default class QuickAddTagButton extends Component {
     const canEdit = this.args.topic.canEditTags;
 
     // for (const settingButton in settingObj) {
-    //   if (settingButton.categories.split("|").includes(this.args.topic.category_id
+    //   if (settingButton.categories.split("|").includes(this.args.topic.category_id)) {
     //   if (settings.auto_close_topic) {
     //     if (this.currentUser.moderator || this.currentUser.admin || this.currentUser.trust_level == 4) {
     //       return true;
