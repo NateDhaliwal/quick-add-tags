@@ -13,28 +13,27 @@ export default class QuickAddTagButton extends Component {
   @service toasts;
   @service discovery;
 
-  // @tracked category = this.discovery.category.id;
-
-  constructor() {
-    super(...arguments);
-    async function cat() {
-      await console.log(this.discovery.category.id);
-    }
-  }
+  @tracked category = this.discovery.category.id;
 
   get shouldShow() {
+    console.log(this.args.topic);
+    console.log(this.category);
     const settingObj = settings.quick_add_tags_buttons;
     
     const canEdit = this.args.topic.canEditTags;
-    if (settings.auto_close_topic) {
-      if (this.currentUser.moderator || this.currentUser.admin || this.currentUser.trust_level == 4) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return canEdit;
-    }
+
+    // for (const settingButton in settingObj) {
+    //   if (settingButton.categories.split("|").includes(this.args.topic.category_id
+    //   if (settings.auto_close_topic) {
+    //     if (this.currentUser.moderator || this.currentUser.admin || this.currentUser.trust_level == 4) {
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   } else {
+    //     return canEdit;
+    //   }
+    // }
   }
 
   @action
