@@ -17,7 +17,7 @@ export default class QuickAddTagButton extends Component {
     const topic = this.args.topic;
     console.log(topic);
     const settingObj = settings.quick_add_tags_buttons;
-    
+    console.log(settingObj);
     const canEdit = topic.canEditTags;
 
     for (const settingButton in settingObj) {
