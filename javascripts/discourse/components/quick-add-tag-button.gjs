@@ -14,12 +14,14 @@ export default class QuickAddTagButton extends Component {
   @service toasts;
 
   get shouldShow() {
+    const topic = this.args.topic;
+    console.log(topic);
     const settingObj = settings.quick_add_tags_buttons;
     
-    const canEdit = this.args.topic.canEditTags;
+    const canEdit = topic.canEditTags;
 
     for (const settingButton in settingObj) {
-      if (settingButton.in_categories.split("|").includes(this.args.topic.category_id)) {
+      if (settingButton.in_categories.split("|").includes(topic.category_id)) {
         if (settingButton.auto_close_topic) {
           if (this.currentUser.moderator || this.currentUser.admin || this.currentUser.trust_level == 4) {
             return true;
