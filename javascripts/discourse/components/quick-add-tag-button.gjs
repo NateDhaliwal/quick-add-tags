@@ -13,9 +13,17 @@ export default class QuickAddTagButton extends Component {
   @service toasts;
   @service discovery;
 
+  // @tracked category = this.discovery.category.id;
+
+  constructor() {
+    super(...arguments);
+    async function cat() {
+      await console.log(this.discovery.category.id);
+    }
+  }
+
   get shouldShow() {
     const settingObj = settings.quick_add_tags_buttons;
-    console.log(this.discovery.category.id);
     
     const canEdit = this.args.topic.canEditTags;
     if (settings.auto_close_topic) {
