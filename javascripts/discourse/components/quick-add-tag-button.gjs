@@ -34,6 +34,7 @@ export default class QuickAddTagButton extends Component {
     //     return canEdit;
     //   }
     // }
+    return true;
   }
 
   @action
