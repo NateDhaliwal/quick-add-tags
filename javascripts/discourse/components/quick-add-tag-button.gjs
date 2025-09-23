@@ -16,11 +16,10 @@ export default class QuickAddTagButton extends Component {
   get shouldShow() {
     const topic = this.args.topic;
     const settingObj = settings.quick_add_tags_buttons;
-    console.log(settingObj);
     const canEdit = topic.canEditTags;
 
-    for (const settingButton in settingObj) {
-      console.log(settingButton);
+    for (const settingIndex in settingObj) {
+      const settingButton = settingObj[settingIndex];
       if (settingButton.in_categories.includes(topic.category_id)) {
         if (settingButton.auto_close_topic) {
           if (this.currentUser.moderator || this.currentUser.admin || this.currentUser.trust_level == 4) {
@@ -41,7 +40,8 @@ export default class QuickAddTagButton extends Component {
     const topic = this.args.topic;
     const currentTags = topic.tags;
     const settingTags = [];
-    for (const settingButton in settingObj) {
+    for (const settingIndex in settingObj) {
+      const settingButton = settingObj[settingIndex];
       if (settingButton.in_categories.includes(topic.category_id)) {
         settingTags = settingButton.tags;
       }
