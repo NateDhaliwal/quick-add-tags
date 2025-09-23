@@ -46,7 +46,7 @@ export default class QuickAddTagButton extends Component {
     const settingObj = settings.quick_add_tags_buttons;
     const topic = this.args.topic;
     const currentTags = topic.tags;
-    const settingTags = [];
+    let settingTags = [];
     for (const settingButton of settingObj) {
       if (settingButton.in_categories.includes(topic.category_id)) {
         settingTags = settingButton.tags;
