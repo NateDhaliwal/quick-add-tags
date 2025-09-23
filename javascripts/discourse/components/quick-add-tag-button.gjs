@@ -18,16 +18,20 @@ export default class QuickAddTagButton extends Component {
     const cat_id = topic.category_id;
     const settingObj = settings.quick_add_tags_buttons;
     const canEdit = topic.canEditTags;
+    console.log(canEdit);
 
     for (const settingButton of settingObj) {
       if (settingButton.in_categories !== null && settingButton.in_categories.includes(cat_id)) {
         if (settingButton.auto_close_topic) {
           if (this.currentUser.moderator || this.currentUser.admin || this.currentUser.trust_level == 4) {
+            console.log("Is mod");
             this.allowedDict.cat_id = true;
           } else {
+            console.log("Not mod");
             this.allowedDict.cat_id = false;
           }
         } else {
+          console.log("Not auto close");
           this.allowedDict.cat_id = canEdit;
         }
       }
