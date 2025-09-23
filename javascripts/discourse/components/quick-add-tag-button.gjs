@@ -26,19 +26,19 @@ export default class QuickAddTagButton extends Component {
         if (settingButton.auto_close_topic) {
           if (this.currentUser.moderator || this.currentUser.admin || this.currentUser.trust_level == 4) {
             console.log("Is mod");
-            this.allowedDict.cat_id = true;
+            this.allowedDict[cat_id] = true;
           } else {
             console.log("Not mod");
-            this.allowedDict.cat_id = false;
+            this.allowedDict[cat_id] = false;
           }
         } else {
           console.log("Not auto close");
-          this.allowedDict.cat_id = canEdit;
+          this.allowedDict[cat_id] = canEdit;
         }
       }
     }
     console.log(this.allowedDict);
-    return this.allowedDict.cat_id;
+    return this.allowedDict[cat_id];
   }
 
   @action
