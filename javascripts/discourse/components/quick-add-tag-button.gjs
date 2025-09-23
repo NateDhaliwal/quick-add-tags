@@ -11,7 +11,7 @@ export default class QuickAddTagButton extends Component {
   @service currentUser;
   @service toasts;
 
-  @tracked allowedDict = {};
+  @tracked allowedDict = [];
 
   get shouldShow() {
     const topic = this.args.topic;
@@ -26,19 +26,19 @@ export default class QuickAddTagButton extends Component {
         if (settingButton.auto_close_topic) {
           if (this.currentUser.moderator || this.currentUser.admin || this.currentUser.trust_level == 4) {
             console.log("Is mod");
-            this.allowedDict[cat_id] = true;
+            this.allowedDict.push({cat_id: true});
           } else {
             console.log("Not mod");
-            this.allowedDict[cat_id] = false;
+            this.allowedDict.push({cat_id: false});
           }
         } else {
           console.log("Not auto close");
-          this.allowedDict[cat_id] = canEdit;
+          this.allowedDict.push({cat_id: canEdit});
         }
       }
     }
     console.log(this.allowedDict);
-    return this.allowedDict[cat_id];
+    return this.allowedDict.find(id_bool => id_bool == cat_id);
   }
 
   @action
@@ -104,14 +104,16 @@ export default class QuickAddTagButton extends Component {
   }
 
   <template>
-    {{#if this.shouldShow}}
-      <DButton
-        @action={{this.addTag}}
-        @icon="tag"
-        @label={{themePrefix "quick_add_tag_button_text"}}
-        @title={{themePrefix "quick_add_tag_button_title"}}
-        class="btn-text"
-      />
-    {{/if}}
+    {{#each this.allowedDict}}
+      {{#if this.shouldShow}}
+        <DButton
+          @action={{this.addTag}}
+          @icon="tag"
+          @label={{themePrefix "quick_add_tag_button_text"}}
+          @title={{themePrefix "quick_add_tag_button_title"}}
+          class="btn-text"
+        />
+      {{/if}}
+    {{/each}}
   </template>
 }
