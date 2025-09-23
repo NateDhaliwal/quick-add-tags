@@ -20,6 +20,7 @@ export default class QuickAddTagButton extends Component {
     const canEdit = topic.canEditTags;
 
     for (const settingButton in settingObj) {
+      console.log(settingButton);
       if (settingButton.in_categories.includes(topic.category_id)) {
         if (settingButton.auto_close_topic) {
           if (this.currentUser.moderator || this.currentUser.admin || this.currentUser.trust_level == 4) {
