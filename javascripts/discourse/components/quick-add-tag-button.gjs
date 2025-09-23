@@ -20,6 +20,8 @@ export default class QuickAddTagButton extends Component {
 
     for (const settingIndex in settingObj) {
       const settingButton = settingObj[settingIndex];
+      console.log(settingObj[settingIndex]);
+      console.log(settingButton);
       if (settingButton.in_categories.includes(topic.category_id)) {
         if (settingButton.auto_close_topic) {
           if (this.currentUser.moderator || this.currentUser.admin || this.currentUser.trust_level == 4) {
