@@ -104,7 +104,7 @@ export default class QuickAddTagButton extends Component {
   }
 
   <template>
-    {{#each this.allowedDict}}
+    {{#each settings.quick_add_tag_buttons}}
       {{#if this.shouldShow}}
         <DButton
           @action={{this.addTag}}
