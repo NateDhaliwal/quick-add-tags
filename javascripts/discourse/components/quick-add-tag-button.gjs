@@ -32,7 +32,7 @@ export default class QuickAddTagButton extends Component {
         }
       }
     }
-
+    console.log(this.allowedDict);
     return this.allowedDict.cat_id;
   }
 
