@@ -5,32 +5,35 @@ import { action } from "@ember/object";
 import { service } from "@ember/service";
 
 import { ajax } from "discourse/lib/ajax";
-import { timeShortcuts } from "discourse/lib/time-shortcut";
-import { inNDays } from "discourse/lib/time-utils";
 import DButton from "discourse/components/d-button";
 
 export default class QuickAddTagButton extends Component {
   @service currentUser;
   @service toasts;
 
+  @tracked allowedDict = {};
+
   get shouldShow() {
     const topic = this.args.topic;
+    const cat_id = topic.category_id;
     const settingObj = settings.quick_add_tags_buttons;
     const canEdit = topic.canEditTags;
 
     for (const settingButton of settingObj) {
-      if (settingButton.in_categories !== null && settingButton.in_categories.includes(topic.category_id)) {
+      if (settingButton.in_categories !== null && settingButton.in_categories.includes(cat_id)) {
         if (settingButton.auto_close_topic) {
           if (this.currentUser.moderator || this.currentUser.admin || this.currentUser.trust_level == 4) {
-            return true;
+            this.allowedDict.cat_id = true;
           } else {
-            return false;
+            this.allowedDict.cat_id = false;
           }
         } else {
-          return canEdit;
+          this.allowedDict.cat_id = canEdit;
         }
       }
     }
+
+    return this.allowedDict.cat_id;
   }
 
   @action
