@@ -79,8 +79,8 @@ export default class QuickAddTagButton extends Component {
             <DButton
               @action={{fn (this.addTag setting_button)}}
               @icon="tag"
-              {{! @label={{themePrefix "quick_add_tag_button_text"}} }}
-              {{! @title={{themePrefix "quick_add_tag_button_title"}} }}
+              {{! @label={{themePrefix "quick_add_tag_button_text"}}
+              {{! @title={{themePrefix "quick_add_tag_button_title"}}
               @translatedLabel={{setting_button.button_label}}
               @translatedTitle={{setting_button.button_title}}
               
@@ -92,8 +92,8 @@ export default class QuickAddTagButton extends Component {
             <DButton
               @action={{fn (this.addTag setting_button)}}
               @icon="tag"
-              {{! @label={{themePrefix "quick_add_tag_button_text"}} }}
-              {{! @title={{themePrefix "quick_add_tag_button_title"}} }}
+              {{! @label={{themePrefix "quick_add_tag_button_text"}}
+              {{! @title={{themePrefix "quick_add_tag_button_title"}}
               @translatedLabel={{setting_button.button_label}}
               @translatedTitle={{setting_button.button_title}}
 
