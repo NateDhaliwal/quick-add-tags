@@ -73,7 +73,7 @@ export default class QuickAddTagButton extends Component {
   <template>
     {{! We move the logic here, so that we can check if the button should show per button in the settings, since (I don't think) we can pass arguments into getters }}
     {{#each settings.quick_add_tags_buttons as |setting_button|}}
-      {{#if (includes setting_button.in_categories this.args.topic.category_id)}}
+      {{#if (includes setting_button.in_categories @topic.category_id)}}
         {{#if setting_button.auto_close_topic}}
           {{#if (or this.currentUser.moderator this.currentUser.admin (eq this.currentUser.trust_level 4))}}
             <DButton
@@ -88,7 +88,7 @@ export default class QuickAddTagButton extends Component {
             />
           {{/if}}
         {{else}}
-          {{#if (eq this.args.topic.canEditTags true)}}
+          {{#if (eq @topic.canEditTags true)}}
             <DButton
               @action={{fn (this.addTag setting_button)}}
               @icon="tag"
