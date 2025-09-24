@@ -108,6 +108,6 @@ export default class QuickAddTagButton extends Component {
           class="btn-text"
         />
       {{/if}}
-    {{/each}}
+    {{/with}}
   </template>
 }
