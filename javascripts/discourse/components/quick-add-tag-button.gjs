@@ -1,7 +1,7 @@
+/* eslint-disable */
 import Component from "@glimmer/component";
-import { tracked } from "@glimmer/tracking";
 
-import { fn } from "@ember/helper"
+import { fn } from "@ember/helper";
 import { action } from "@ember/object";
 import { service } from "@ember/service";
 
@@ -9,6 +9,7 @@ import { ajax } from "discourse/lib/ajax";
 import DButton from "discourse/components/d-button";
 
 import { eq, includes, or } from "truth-helpers";
+/* eslint-enable */
 
 export default class QuickAddTagButton extends Component {
   @service currentUser;
@@ -27,7 +28,7 @@ export default class QuickAddTagButton extends Component {
         newTags.push(tag);
       }
     });
-    
+
     try {
       if (setting_button.auto_close_topic) {
         await ajax(`/t/${topic.id}/timer.json`, {
@@ -44,6 +45,7 @@ export default class QuickAddTagButton extends Component {
           tags: newTags,
           keep_existing_draft: true
         }
+      // eslint-disable-next-line no-unused-vars
       }).then((response) => {
         this.toasts.success({
           duration: "short",
@@ -83,7 +85,7 @@ export default class QuickAddTagButton extends Component {
               {{! @title={{themePrefix "quick_add_tag_button_title"}}
               @translatedLabel={{setting_button.button_label}}
               @translatedTitle={{setting_button.button_title}}
-              
+
               class="btn-text"
             />
           {{/if}}
