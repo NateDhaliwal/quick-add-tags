@@ -116,15 +116,18 @@ export default class QuickAddTagButton extends Component {
             class="btn-text"
           />
         {{/if}}
-      {{else if (this.args.topic.canEditTags)}}
-        <p>Can edit tags</p>
-        <DButton
-          @action={{fn (this.addTag setting_button)}}
-          @icon="tag"
-          @label={{themePrefix "quick_add_tag_button_text"}}
-          @title={{themePrefix "quick_add_tag_button_title"}}
-          class="btn-text"
-        />
+      {{else}}
+        {{this.args.topic.canEditTags}}
+        {{#if (eq this.args.topic.canEditTags true)}}
+          <p>Can edit tags</p>
+          <DButton
+            @action={{fn (this.addTag setting_button)}}
+            @icon="tag"
+            @label={{themePrefix "quick_add_tag_button_text"}}
+            @title={{themePrefix "quick_add_tag_button_title"}}
+            class="btn-text"
+          />
+        {{/if}}
       {{/if}}
     {{/each}}
   </template>
