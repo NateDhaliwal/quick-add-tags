@@ -14,36 +14,6 @@ export default class QuickAddTagButton extends Component {
   @service currentUser;
   @service toasts;
 
-  // @tracked allowedDict = [];
-
-  // get shouldShow() {
-  //   const topic = this.args.topic;
-  //   const cat_id = topic.category_id;
-  //   const settingObj = settings.quick_add_tags_buttons;
-  //   console.log(topic);
-  //   const canEdit = topic.canEditTags !== undefined;
-  //   console.log(canEdit);
-
-  //   for (const settingButton of settingObj) {
-  //     if (settingButton.in_categories !== null && settingButton.in_categories.includes(cat_id)) {
-  //       if (settingButton.auto_close_topic) {
-  //         if (this.currentUser.moderator || this.currentUser.admin || this.currentUser.trust_level == 4) {
-  //           console.log("Is mod");
-  //           this.allowedDict.push({cat_id: true});
-  //         } else {
-  //           console.log("Not mod");
-  //           this.allowedDict.push({cat_id: false});
-  //         }
-  //       } else {
-  //         console.log("Not auto close");
-  //         this.allowedDict.push({cat_id: canEdit});
-  //       }
-  //     }
-  //   }
-  //   console.log(this.allowedDict);
-  //   return true; // this.allowedDict.find(id_bool => id_bool == cat_id);
-  // }
-
   @action
   async addTag(setting_button) {
     const topic = this.args.topic;
@@ -101,6 +71,7 @@ export default class QuickAddTagButton extends Component {
   }
 
   <template>
+    {{! We move the logic here, so that we can check if the button should show per button in the settings, since (I don't think) we can pass arguments into getters }}
     {{#each settings.quick_add_tags_buttons as |setting_button|}}
       {{#if (includes setting_button.in_categories this.args.topic.category_id)}}
         {{#if setting_button.auto_close_topic}}
