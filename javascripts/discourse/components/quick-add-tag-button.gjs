@@ -101,6 +101,7 @@ export default class QuickAddTagButton extends Component {
   <template>
     {{#each settings.quick_add_tags_buttons as |setting_button|}}
       {{#if this.shouldShow}}
+        {{setting_button.tags_to_add}}
         <DButton
           @action={{fn (this.addTag setting_button)}}
           @icon="tag"
