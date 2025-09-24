@@ -8,7 +8,7 @@ import { service } from "@ember/service";
 import { ajax } from "discourse/lib/ajax";
 import DButton from "discourse/components/d-button";
 
-import { an, eq, or } from "truth-helpers";
+import { eq, or } from "truth-helpers";
 
 export default class QuickAddTagButton extends Component {
   @service currentUser;
@@ -103,7 +103,9 @@ export default class QuickAddTagButton extends Component {
   <template>
     {{#each settings.quick_add_tags_buttons as |setting_button|}}
       {{#if setting_button.auto_close_topic}}
+        <p>Auto close</p>
         {{#if (or this.currentUser.moderator this.currentUser.admin (eq this.currentUser.trust_level 4))}}
+          <p>Can close</p>
           <DButton
             @action={{fn (this.addTag setting_button)}}
             @icon="tag"
@@ -113,6 +115,7 @@ export default class QuickAddTagButton extends Component {
           />
         {{/if}}
       {{else if (this.args.topic.canEditTags)}}
+        <p>Can edit tags</p>
         <DButton
           @action={{fn (this.addTag setting_button)}}
           @icon="tag"
