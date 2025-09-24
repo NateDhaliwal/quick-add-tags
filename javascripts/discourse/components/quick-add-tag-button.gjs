@@ -14,7 +14,7 @@ export default class QuickAddTagButton extends Component {
   @service currentUser;
   @service toasts;
 
-  @tracked allowedDict = [];
+  // @tracked allowedDict = [];
 
   // get shouldShow() {
   //   const topic = this.args.topic;
@@ -102,6 +102,8 @@ export default class QuickAddTagButton extends Component {
 
   <template>
     {{#each settings.quick_add_tags_buttons as |setting_button|}}
+      <p>{{setting_button.auto_close_topic}}</p>
+      <p>{{setting_button.in_categories}}</p>
       {{#if setting_button.auto_close_topic}}
         <p>Auto close</p>
         {{#if (or this.currentUser.moderator this.currentUser.admin (eq this.currentUser.trust_level 4))}}
