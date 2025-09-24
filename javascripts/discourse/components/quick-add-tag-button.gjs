@@ -46,7 +46,7 @@ export default class QuickAddTagButton extends Component {
   async addTag(setting_button) {
     const topic = this.args.topic;
     const currentTags = topic.tags;
-    const settingTags = setting_button.tags;
+    const settingTags = setting_button.tags_to_add;
 
     let newTags = currentTags;
 
