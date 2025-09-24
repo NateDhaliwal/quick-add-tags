@@ -1,13 +1,26 @@
-quick_add_tags:
-  default: ""
-  type: list
-  list_type: tag
-
-auto_close_topic:
-  default: false
-  type: bool
-
-auto_close_topic_days:
-  default: 1
-  type: integer
-  min: 0
+quick_add_tags_buttons:
+  default: []
+  type: objects
+  schema:
+    name: button
+    properties:
+      tags_to_add:
+        type: tags
+        # list_type: tag
+      in_categories:
+        type: categories
+        # list_type: category
+      auto_close_topic:
+        type: boolean
+        default: false
+      auto_close_topic_days:
+        type: integer
+        default: 1
+        validations:
+          min: 0
+      button_label:
+        type: string
+        default: "Add tags"
+      button_title:
+        type: string
+        default: "Add tags"
