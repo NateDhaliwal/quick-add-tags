@@ -98,7 +98,7 @@ export default class QuickAddTagButton extends Component {
   }
 
   <template>
-    {{#with settings.quick_add_tags_buttons as |setting_button|}}
+    {{#each settings.quick_add_tags_buttons as |setting_button|}}
       {{#if this.shouldShow}}
         <DButton
           @action={{fn (this.addTag setting_button)}}
@@ -108,6 +108,6 @@ export default class QuickAddTagButton extends Component {
           class="btn-text"
         />
       {{/if}}
-    {{/with}}
+    {{/each}}
   </template>
 }
