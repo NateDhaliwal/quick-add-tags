@@ -6,6 +6,4 @@ en:
   theme_metadata:
     description: "Quickly add tag(s) to a topic with a button at the topic footer."
     settings:
-      quick_add_tags: "List of tags to be added when the button is clicked"
-      auto_close_topic: "Close the topic automatically after tags are applied. <br> NOTE: Enabling this removes the button for users with tag editing permissions, and only displays it for TL4s, moderators and admins."
-      auto_close_topic_days: "Close the topic how many days after tags are applied. Defaults to 1."
+      quick_add_tags_buttons: "List of buttons to add to the topic footer. Each button has its own list of tags and settings."
