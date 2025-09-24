@@ -8,7 +8,7 @@ import { service } from "@ember/service";
 import { ajax } from "discourse/lib/ajax";
 import DButton from "discourse/components/d-button";
 
-import { eq, or } from "truth-helpers";
+import { eq, includes, or } from "truth-helpers";
 
 export default class QuickAddTagButton extends Component {
   @service currentUser;
@@ -102,25 +102,27 @@ export default class QuickAddTagButton extends Component {
 
   <template>
     {{#each settings.quick_add_tags_buttons as |setting_button|}}
-      {{#if setting_button.auto_close_topic}}
-        {{#if (or this.currentUser.moderator this.currentUser.admin (eq this.currentUser.trust_level 4))}}
-          <DButton
-            @action={{fn (this.addTag setting_button)}}
-            @icon="tag"
-            @label={{themePrefix "quick_add_tag_button_text"}}
-            @title={{themePrefix "quick_add_tag_button_title"}}
-            class="btn-text"
-          />
-        {{/if}}
-      {{else}}
-        {{#if (eq this.args.topic.canEditTags true)}}
-          <DButton
-            @action={{fn (this.addTag setting_button)}}
-            @icon="tag"
-            @label={{themePrefix "quick_add_tag_button_text"}}
-            @title={{themePrefix "quick_add_tag_button_title"}}
-            class="btn-text"
-          />
+      {{#if (includes setting_button.in_categories this.args.topic.category_id)}}
+        {{#if setting_button.auto_close_topic}}
+          {{#if (or this.currentUser.moderator this.currentUser.admin (eq this.currentUser.trust_level 4))}}
+            <DButton
+              @action={{fn (this.addTag setting_button)}}
+              @icon="tag"
+              @label={{themePrefix "quick_add_tag_button_text"}}
+              @title={{themePrefix "quick_add_tag_button_title"}}
+              class="btn-text"
+            />
+          {{/if}}
+        {{else}}
+          {{#if (eq this.args.topic.canEditTags true)}}
+            <DButton
+              @action={{fn (this.addTag setting_button)}}
+              @icon="tag"
+              @label={{themePrefix "quick_add_tag_button_text"}}
+              @title={{themePrefix "quick_add_tag_button_title"}}
+              class="btn-text"
+            />
+          {{/if}}
         {{/if}}
       {{/if}}
     {{/each}}
