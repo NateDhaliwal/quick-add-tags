@@ -2,10 +2,10 @@
   "name": "Quick-add Tags",
   "component": true,
   "authors": "NateDhaliwal",
-  "about_url": "TODO: Put your theme's public repo or Meta topic URL here",
+  "about_url": "https://meta.discourse.org/t/quick-add-tags-to-topic/383271",
   "license_url": "https://github.com/NateDhaliwal/quick-add-tags/blob/main/LICENSE",
   "learn_more": "TODO",
-  "theme_version": "0.0.1",
+  "theme_version": "1.0.0",
   "assets": {},
   "modifiers": {}
 }
