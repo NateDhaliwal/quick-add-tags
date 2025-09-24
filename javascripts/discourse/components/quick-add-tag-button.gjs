@@ -42,16 +42,10 @@ export default class QuickAddTagButton extends Component {
   }
 
   @action
-  async addTag() {
-    const settingObj = settings.quick_add_tags_buttons;
+  async addTag(setting_button) {
     const topic = this.args.topic;
     const currentTags = topic.tags;
-    let settingTags = [];
-    for (const settingButton of settingObj) {
-      if (settingButton.in_categories.includes(topic.category_id)) {
-        settingTags = settingButton.tags_to_add;
-      }
-    }
+    const settingTags = setting_button.tags;
 
     let newTags = currentTags;
 
@@ -62,12 +56,12 @@ export default class QuickAddTagButton extends Component {
     });
     
     try {
-      if (settings.auto_close_topic) {
+      if (setting_button.auto_close_topic) {
         await ajax(`/t/${topic.id}/timer.json`, {
           type: "POST",
           data: {
             status_type: "close",
-            time: settings.auto_close_topic_days * 24 // In hours, multiply by 24 to get days
+            time: setting_button.auto_close_topic_days * 24 // In hours, multiply by 24 to get days
           }
         });
       }
@@ -104,10 +98,10 @@ export default class QuickAddTagButton extends Component {
   }
 
   <template>
-    {{#each settings.quick_add_tags_buttons}}
+    {{#with settings.quick_add_tags_buttons as |setting_button|}}
       {{#if this.shouldShow}}
         <DButton
-          @action={{this.addTag}}
+          @action={{fn (this.addTag setting_button)}}
           @icon="tag"
           @label={{themePrefix "quick_add_tag_button_text"}}
           @title={{themePrefix "quick_add_tag_button_title"}}
