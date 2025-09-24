@@ -39,7 +39,7 @@ export default class QuickAddTagButton extends Component {
       }
     }
     console.log(this.allowedDict);
-    return this.allowedDict.find(id_bool => id_bool == cat_id);
+    return true; // this.allowedDict.find(id_bool => id_bool == cat_id);
   }
 
   @action
