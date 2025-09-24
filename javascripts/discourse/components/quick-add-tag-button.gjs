@@ -102,12 +102,8 @@ export default class QuickAddTagButton extends Component {
 
   <template>
     {{#each settings.quick_add_tags_buttons as |setting_button|}}
-      <p>{{setting_button.auto_close_topic}}</p>
-      <p>{{setting_button.in_categories}}</p>
       {{#if setting_button.auto_close_topic}}
-        <p>Auto close</p>
         {{#if (or this.currentUser.moderator this.currentUser.admin (eq this.currentUser.trust_level 4))}}
-          <p>Can close</p>
           <DButton
             @action={{fn (this.addTag setting_button)}}
             @icon="tag"
@@ -117,9 +113,7 @@ export default class QuickAddTagButton extends Component {
           />
         {{/if}}
       {{else}}
-        {{this.args.topic.canEditTags}}
         {{#if (eq this.args.topic.canEditTags true)}}
-          <p>Can edit tags</p>
           <DButton
             @action={{fn (this.addTag setting_button)}}
             @icon="tag"
