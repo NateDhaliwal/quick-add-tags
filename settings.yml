@@ -10,6 +10,8 @@ quick_add_tags_buttons:
       in_categories:
         type: categories
         # list_type: category
+      show_for_groups:
+        type: groups
       auto_close_topic:
         type: boolean
         default: false
