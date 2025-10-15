@@ -27,6 +27,10 @@ export default class QuickAddTagButton extends Component {
     for (let grp in this.currentUser.groups) {
       user_groups.push(grp.id);
     }
+
+    console.log("user_groups:");
+    console.log(user_groups);
+
     // Pre-fill the allowed_groups array with false values; they will be replaced with `true` values
     // when the loop checks if any of the user's own groups are in the setting's allowed groups
     for (let settingIndex in settings.quick_add_tags_buttons) {
@@ -35,7 +39,10 @@ export default class QuickAddTagButton extends Component {
 
     // Here, we iterate through the settings and iterate through each of that to check if the user is inside.
     for (let setting of settings.quick_add_tags_buttons) {
+      console.log(setting);
       for (let setting_group of setting.show_for_groups) {
+        console.log(setting_group);
+        console.log(user_groups.includes(setting_group));
         if (user_groups.includes(setting_group)) {
           this.allowed_groups[settings.quick_add_tags_buttons.indexOf(setting)] = true;
         }
