@@ -110,9 +110,10 @@ export default class QuickAddTagButton extends Component {
   <template>
     {{! We move the logic here, so that we can check if the button should show per button in the settings, since (I don't think) we can pass arguments into getters }}
     {{#each settings.quick_add_tags_buttons as |setting_button index|}}
-      {{log this.allowed_groups}}
       {{log index}}
-      {{#if (accessIndex  index)}}
+      {{log this.allowed_groups}}
+      {{(accessIndex this.allowed_groups index)}}
+      {{#if (accessIndex this.allowed_groups index)}}
         {{! We check if the setting is even filled up in the first place }}
         {{#if setting_button.in_categories}}
           {{#if (includes setting_button.in_categories @topic.category_id)}}
