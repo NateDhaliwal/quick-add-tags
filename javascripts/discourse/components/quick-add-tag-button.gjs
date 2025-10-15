@@ -118,6 +118,7 @@ export default class QuickAddTagButton extends Component {
         {{#if setting_button.in_categories}}
           {{log "In categories"}}
           {{#if (includes setting_button.in_categories @topic.category_id)}}
+            {{log "In categories setting"}}
             {{#if setting_button.auto_close_topic}}
               {{#if (or this.currentUser.moderator this.currentUser.admin (eq this.currentUser.trust_level 4))}}
                 <DButton
@@ -132,6 +133,7 @@ export default class QuickAddTagButton extends Component {
                 />
               {{/if}}
             {{else}}
+              {{log "Auto-close off"}}
               {{#if (eq @topic.canEditTags true)}}
                 {{log "Can edit tags"}}
                 <DButton
