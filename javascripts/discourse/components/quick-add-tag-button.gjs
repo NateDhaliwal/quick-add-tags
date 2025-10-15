@@ -104,6 +104,7 @@ export default class QuickAddTagButton extends Component {
       {{#if true}}
         {{log this.allowed_groups}}
         {{log index}}
+        {{log this.allowed_grousp[index]}}
         <h1>{{this.allowed_groups.[index]}}</h1>
         {{! We check if the setting is even filled up in the first place }}
         {{#if setting_button.in_categories}}
