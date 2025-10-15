@@ -10,6 +10,8 @@ import { ajax } from "discourse/lib/ajax";
 import DButton from "discourse/components/d-button";
 
 import { eq, includes, or } from "truth-helpers";
+
+import { accessIndex } from "../helpers/accessIndex";
 /* eslint-enable */
 
 export default class QuickAddTagButton extends Component {
@@ -104,7 +106,7 @@ export default class QuickAddTagButton extends Component {
       {{#if true}}
         {{log this.allowed_groups}}
         {{log index}}
-        {{log this.allowed_grousp[index]}}
+        {{log (accessIndex this.allowed_groups index)}}
         <h1>{{this.allowed_groups.[index]}}</h1>
         {{! We check if the setting is even filled up in the first place }}
         {{#if setting_button.in_categories}}
