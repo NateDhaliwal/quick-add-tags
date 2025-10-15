@@ -75,7 +75,38 @@ export default class QuickAddTagButton extends Component {
   <template>
     {{! We move the logic here, so that we can check if the button should show per button in the settings, since (I don't think) we can pass arguments into getters }}
     {{#each settings.quick_add_tags_buttons as |setting_button|}}
-      {{#if (includes setting_button.in_categories @topic.category_id)}}
+      {{! We check if the setting is even filled up in the first place }}
+      {{#if setting_button.in_categories}}
+        {{#if (includes setting_button.in_categories @topic.category_id)}}
+          {{#if setting_button.auto_close_topic}}
+            {{#if (or this.currentUser.moderator this.currentUser.admin (eq this.currentUser.trust_level 4))}}
+              <DButton
+                @action={{fn (this.addTag setting_button)}}
+                @icon="tag"
+                {{! @label={{themePrefix "quick_add_tag_button_text"}}
+                {{! @title={{themePrefix "quick_add_tag_button_title"}}
+                @translatedLabel={{setting_button.button_label}}
+                @translatedTitle={{setting_button.button_title}}
+  
+                class="btn-text"
+              />
+            {{/if}}
+          {{else}}
+            {{#if (eq @topic.canEditTags true)}}
+              <DButton
+                @action={{fn (this.addTag setting_button)}}
+                @icon="tag"
+                {{! @label={{themePrefix "quick_add_tag_button_text"}}
+                {{! @title={{themePrefix "quick_add_tag_button_title"}}
+                @translatedLabel={{setting_button.button_label}}
+                @translatedTitle={{setting_button.button_title}}
+  
+                class="btn-text"
+              />
+            {{/if}}
+          {{/if}}
+        {{/if}}
+      {{else}}
         {{#if setting_button.auto_close_topic}}
           {{#if (or this.currentUser.moderator this.currentUser.admin (eq this.currentUser.trust_level 4))}}
             <DButton
