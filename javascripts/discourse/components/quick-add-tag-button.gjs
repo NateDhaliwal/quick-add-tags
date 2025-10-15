@@ -112,10 +112,11 @@ export default class QuickAddTagButton extends Component {
     {{#each settings.quick_add_tags_buttons as |setting_button index|}}
       {{log index}}
       {{log this.allowed_groups}}
-      {{(accessIndex this.allowed_groups index)}}
+      {{log (accessIndex this.allowed_groups index)}}
       {{#if (accessIndex this.allowed_groups index)}}
         {{! We check if the setting is even filled up in the first place }}
         {{#if setting_button.in_categories}}
+          {{log "In categories"}}
           {{#if (includes setting_button.in_categories @topic.category_id)}}
             {{#if setting_button.auto_close_topic}}
               {{#if (or this.currentUser.moderator this.currentUser.admin (eq this.currentUser.trust_level 4))}}
@@ -132,6 +133,7 @@ export default class QuickAddTagButton extends Component {
               {{/if}}
             {{else}}
               {{#if (eq @topic.canEditTags true)}}
+                {{log "Can edit tags"}}
                 <DButton
                   @action={{fn (this.addTag setting_button)}}
                   @icon="tag"
@@ -146,6 +148,7 @@ export default class QuickAddTagButton extends Component {
             {{/if}}
           {{/if}}
         {{else}}
+          {{log "No category - all"}}
           {{#if setting_button.auto_close_topic}}
             {{#if (or this.currentUser.moderator this.currentUser.admin (eq this.currentUser.trust_level 4))}}
               <DButton
