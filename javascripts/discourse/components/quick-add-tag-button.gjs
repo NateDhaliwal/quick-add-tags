@@ -24,9 +24,7 @@ export default class QuickAddTagButton extends Component {
     // for (let grp in this.currentUser.groups) {
     //   this.user_groups.push(grp.name);
     // }
-    for (let stng in settings.quick_add_tags_buttons) {
-      console.log(stng.show_for_groups);
-    }
+    console.log(settings.quick_add_tags_buttons);
   }
 
   @action
