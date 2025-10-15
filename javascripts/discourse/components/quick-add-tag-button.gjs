@@ -15,6 +15,11 @@ export default class QuickAddTagButton extends Component {
   @service currentUser;
   @service toasts;
 
+  constructor() {
+    super(...arguments);
+    console.log(this.currentUser);
+  }
+
   @action
   async addTag(setting_button) {
     const topic = this.args.topic;
