@@ -1,5 +1,6 @@
 /* eslint-disable */
 import Component from "@glimmer/component";
+import { tracked } from "@glimmer/tracking";
 
 import { fn } from "@ember/helper";
 import { action } from "@ember/object";
@@ -15,9 +16,17 @@ export default class QuickAddTagButton extends Component {
   @service currentUser;
   @service toasts;
 
+  @tracked user_groups = [];
+
   constructor() {
     super(...arguments);
     console.log(this.currentUser);
+    // for (let grp in this.currentUser.groups) {
+    //   this.user_groups.push(grp.name);
+    // }
+    for (let stng in settings.quick_add_tags_buttons) {
+      console.log(stng.show_for_groups);
+    }
   }
 
   @action
