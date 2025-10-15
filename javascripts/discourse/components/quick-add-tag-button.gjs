@@ -24,7 +24,7 @@ export default class QuickAddTagButton extends Component {
     super(...arguments);
     let user_groups = []
     console.log(this.currentUser);
-    for (let grp in this.currentUser.groups) {
+    for (let grp of this.currentUser.groups) {
       user_groups.push(grp.id);
     }
 
