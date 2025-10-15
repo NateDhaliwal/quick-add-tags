@@ -119,6 +119,7 @@ export default class QuickAddTagButton extends Component {
           {{log "In categories"}}
           {{#if (includes setting_button.in_categories @topic.category_id)}}
             {{log "In categories setting"}}
+            {{log setting_button.auto_close_topic}}
             {{#if setting_button.auto_close_topic}}
               {{log "Auto-close on"}}
               {{#if (or this.currentUser.moderator this.currentUser.admin (eq this.currentUser.trust_level 4))}}
