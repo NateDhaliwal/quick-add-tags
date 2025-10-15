@@ -11,7 +11,7 @@ import DButton from "discourse/components/d-button";
 
 import { eq, includes, or } from "truth-helpers";
 
-import { accessIndex } from "../helpers/accessIndex";
+import accessIndex from "../helpers/accessIndex";
 /* eslint-enable */
 
 export default class QuickAddTagButton extends Component {
