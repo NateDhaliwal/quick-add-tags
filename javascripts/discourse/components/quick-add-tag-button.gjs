@@ -35,7 +35,7 @@ export default class QuickAddTagButton extends Component {
 
     // Here, we iterate through the settings and iterate through each of that to check if the user is inside.
     for (let setting of settings.quick_add_tags_buttons) {
-      console.log(setting.show_for_groups);
+      console.log(setting.show_for_groups === undefined);
       console.log(typeof setting.show_for_groups);
       for (let setting_group of setting.show_for_groups) {
         if (user_groups.includes(setting_group)) {
